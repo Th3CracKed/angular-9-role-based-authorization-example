@@ -1,0 +1,27 @@
+﻿<div class="card mt-4">
+    <h4 class="card-header">Admin</h4>
+    <div class="card-body">
+        <p>This page can be accessed <u>only by administrators</u>.</p>
+        <p class="mb-1">All users from secure (admin only) api end point:</p>
+        <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+        <div *ngIf="users">
+            <div *ngFor="let user of users">
+                <div class="form-group">
+                    <label for="email">User Name</label>
+                    <input type="text" name="username" [(ngModel)]="user.username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" [(ngModel)]="user.firstName" placeholder="FirstName"
+                        id="firstName">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" [(ngModel)]="user.lastName" placeholder="lastName" id="lastName">
+                </div>
+                <button (click)="updateUser(user)" class="btn btn-primary">Update</button>
+                <button (click)="deleteUser(user._id)" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
